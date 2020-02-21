@@ -31,11 +31,7 @@ public class Utils: NSObject {
         super.init()
 
     }
-    
-    @objc
-    public func convert(a: String) {
-        
-    }
+
     @objc
     public func convertDictToMoPubKeywords(dict: Dictionary<String, String>) -> String {
         return dict.toString(entrySeparator: ",", keyValueSeparator: ":")
