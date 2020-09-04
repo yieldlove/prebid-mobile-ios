@@ -115,44 +115,6 @@ class RewardedVideoController: UIViewController, GADRewardedAdDelegate, MPReward
         Prebid.shared.storedAuctionResponse = storedResponse
     }
     
-    //Load
-    func loadAMRewardedVideo() {
-        
-        adUnit.fetchDemand(adObject: self.amRequest) { [weak self] (resultCode: ResultCode) in
-            
-            guard let self = self else {
-                print("self is nil")
-                return
-            }
-            
-            self.amRewardedAd.load(self.amRequest) { error in
-                if let error = error {
-                    print("loadAMRewardedVideo failed:\(error)")
-                } else {
-                    
-                    if self.amRewardedAd.isReady == true {
-                        self.amRewardedAd.present(fromRootViewController: self, delegate:self)
-                    }
-                }
-            }
-        }
-    }
-    
-    func loadMPRewardedVideo() {
-        
-        let targetingDict = NSMutableDictionary()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        adUnit.fetchDemand(adObject: targetingDict) { [weak self] (resultCode: ResultCode) in
-            print("Prebid demand fetch for mopub \(resultCode.name())")
-
-            if let targetingDict = targetingDict as? Dictionary<String, String> {
-                let keywords = Utils.shared.convertDictToMoPubKeywords(dict: targetingDict)
-                MPRewardedVideo.loadAd(withAdUnitID: self?.mpAdUnitId, keywords: keywords, userDataKeywords: nil, mediationSettings: nil);
-            }
-        }
-    }
-    
     //MARK: - GADRewardedAdDelegate
     func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
         print("Reward received with currency: \(reward.type), amount \(reward.amount).")

@@ -19,6 +19,7 @@
 		60A2E95D24F82EC000635541 /* PrebidMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA12E478231E9DAA00CAA05B /* PrebidMobile.framework */; };
 		60A2E95E24F82EC000635541 /* PrebidMobile.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA12E478231E9DAA00CAA05B /* PrebidMobile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		60A2E96124F83E4E00635541 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2E96024F83E4E00635541 /* LandingViewController.swift */; };
+		60A2E96824FEE24400635541 /* OutstreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2E96724FEE24400635541 /* OutstreamViewController.swift */; };
 		C7A1F0B942F152B467C71A70 /* Pods_PrebidDemoObjectiveC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B64CCFCC9D513DEAA95A372 /* Pods_PrebidDemoObjectiveC.framework */; };
 		DADFB9F410588613B69275BC /* Pods_PrebidDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5976732304BFCF6E222040EE /* Pods_PrebidDemoTests.framework */; };
 		FA12E4B7231EB04100CAA05B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA12E4B6231EB04100CAA05B /* AppDelegate.swift */; };
@@ -156,6 +157,7 @@
 		60A2E94E24F82AE800635541 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60A2E95024F82AE800635541 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60A2E96024F83E4E00635541 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LandingViewController.swift; path = ../../../example/PrebidDemo/ANPrebidDemoSwift/LandingViewController.swift; sourceTree = "<group>"; };
+		60A2E96724FEE24400635541 /* OutstreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OutstreamViewController.swift; path = ../../../example/PrebidDemo/ANPrebidDemoSwift/OutstreamViewController.swift; sourceTree = "<group>"; };
 		658745FEE114707D845BCCDA /* Pods-PrebidDemoPodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidDemoPodTests.release.xcconfig"; path = "Target Support Files/Pods-PrebidDemoPodTests/Pods-PrebidDemoPodTests.release.xcconfig"; sourceTree = "<group>"; };
 		6CD6AD93320513F54EF922A8 /* Pods-PrebidDemoPodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidDemoPodTests.debug.xcconfig"; path = "Target Support Files/Pods-PrebidDemoPodTests/Pods-PrebidDemoPodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71D584CFFA6132CB2B6B74A6 /* Pods-PrebidDemoObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrebidDemoObjectiveC.debug.xcconfig"; path = "Target Support Files/Pods-PrebidDemoObjectiveC/Pods-PrebidDemoObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				60A2E94D24F82AE800635541 /* LaunchScreen.storyboard */,
 				60A2E95024F82AE800635541 /* Info.plist */,
 				60A2E96024F83E4E00635541 /* LandingViewController.swift */,
+				60A2E96724FEE24400635541 /* OutstreamViewController.swift */,
 			);
 			path = ANPrebidDemoSwift;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60A2E96824FEE24400635541 /* OutstreamViewController.swift in Sources */,
 				60A2E94724F82AE500635541 /* RewardedViewController.swift in Sources */,
 				60A2E94324F82AE500635541 /* AppDelegate.swift in Sources */,
 				60A2E96124F83E4E00635541 /* LandingViewController.swift in Sources */,
@@ -849,7 +853,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ANPrebidDemoSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -868,7 +872,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ANPrebidDemoSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1003,7 +1007,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HR94J6TSB3;
 				INFOPLIST_FILE = PrebidDemoSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1024,7 +1028,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HR94J6TSB3;
 				INFOPLIST_FILE = PrebidDemoSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

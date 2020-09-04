@@ -51,19 +51,18 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
             else {
                 nextViewController.adServerName = "MoPub"
             }
-            self.present(nextViewController, animated:true, completion:nil)
+            self.navigationController?.pushViewController(nextViewController, animated:true)
+        } else if(indexPath.row == 3){
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "outstreamView") as! OutstreamViewController
+                if(segmentedControl.selectedSegmentIndex == 0){
+                    nextViewController.adServerName = "DFP"
+                }
+                else {
+                    nextViewController.adServerName = "MoPub"
+                }
+            self.navigationController?.pushViewController(nextViewController, animated:true)
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

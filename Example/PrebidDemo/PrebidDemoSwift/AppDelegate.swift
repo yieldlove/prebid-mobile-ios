@@ -34,6 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Prebid.shared.prebidServerHost = PrebidHost.Appnexus
         Prebid.shared.prebidServerAccountId = "bfa84af2-bd16-4d35-96ad-31c6bb888df0"
+        
+        Targeting.shared.subjectToGDPR = true;
+        Targeting.shared.purposeConsents = "111111111100000000000000"
 
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers =  [ (kGADSimulatorID as! String), "cc7ca766f86b43ab6cdc92bed424069b"]
         GADMobileAds.sharedInstance().start()
@@ -46,8 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         coreLocation = CLLocationManager()
         coreLocation?.requestWhenInUseAuthorization()
-       
-
         return true
     }
 
