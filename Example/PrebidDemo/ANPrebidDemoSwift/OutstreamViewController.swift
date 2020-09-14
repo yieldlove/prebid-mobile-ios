@@ -12,12 +12,13 @@ import MoPub
 import PrebidMobile
 
 
-class OutstreamViewController: UIViewController,GADBannerViewDelegate, MPAdViewDelegate{
+class OutstreamViewController: UIViewController,GADBannerViewDelegate, MPAdViewDelegate, MPInterstitialAdControllerDelegate{
         var adServerName: String = ""
         @IBOutlet var appBannerView: UIView!
     
         var amBanner: DFPBannerView!
         var mpBanner: MPAdView!
+        private var mpInterstitial: MPInterstitialAdController!
         let request = DFPRequest()
     
         private var adUnit: AdUnit!
@@ -59,18 +60,21 @@ class OutstreamViewController: UIViewController,GADBannerViewDelegate, MPAdViewD
                 
             } else if (adServerName == "MoPub") {
                 
-                mpBanner = MPAdView(adUnitId: "08184aed0b874758b555100b98f562a4")
-                mpBanner.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
-                mpBanner.delegate = self
-                appBannerView.addSubview(mpBanner)
+                mpInterstitial = MPInterstitialAdController(forAdUnitId: "08184aed0b874758b555100b98f562a4")
+                mpInterstitial.delegate = self
+                
+//                mpBanner = MPAdView(adUnitId: "08184aed0b874758b555100b98f562a4")
+//                mpBanner.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
+//                mpBanner.delegate = self
+                //appBannerView.addSubview(mpBanner)
                 // Do any additional setup after loading the view, typically from a nib.
-                adUnit.fetchDemand(adObject: mpBanner) { [weak self] (resultCode: ResultCode) in
+                adUnit.fetchDemand(adObject: mpInterstitial) { [weak self] (resultCode: ResultCode) in
                     guard let self = self else {
                         print("self is nil")
                         return
                     }
 
-                    self.mpBanner.loadAd(withMaxAdSize: kMPPresetMaxAdSizeMatchFrame)
+                    self.mpInterstitial.loadAd()
                 }
 
             }
@@ -135,5 +139,17 @@ class OutstreamViewController: UIViewController,GADBannerViewDelegate, MPAdViewD
 
         func adView(_ view: MPAdView!, didFailToLoadAdWithError error: Error!) {
             print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+        }
+    
+        //MARK: - MPInterstitialAdControllerDelegate
+        func interstitialDidLoadAd(_ interstitial: MPInterstitialAdController!) {
+            print("Ad ready")
+            if (self.mpInterstitial.ready ) {
+                self.mpInterstitial.show(from: self)
+            }
+        }
+
+        func interstitialDidFail(toLoadAd interstitial: MPInterstitialAdController!) {
+            print("Ad not ready")
         }
     }
