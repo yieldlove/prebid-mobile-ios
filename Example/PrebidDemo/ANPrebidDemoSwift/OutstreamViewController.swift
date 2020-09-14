@@ -15,7 +15,7 @@ import PrebidMobile
 class OutstreamViewController: UIViewController,GADBannerViewDelegate, MPAdViewDelegate{
         var adServerName: String = ""
         @IBOutlet var appBannerView: UIView!
-        
+    
         var amBanner: DFPBannerView!
         var mpBanner: MPAdView!
         let request = DFPRequest()
@@ -46,7 +46,7 @@ class OutstreamViewController: UIViewController,GADBannerViewDelegate, MPAdViewD
                 amBanner.backgroundColor = .red
                 amBanner.rootViewController = self
                 amBanner.delegate = self
-                view.addSubview(amBanner)
+                appBannerView.addSubview(amBanner)
                 
                 adUnit.fetchDemand(adObject: self.request) { [weak self] (resultCode: ResultCode) in
                     
@@ -59,10 +59,10 @@ class OutstreamViewController: UIViewController,GADBannerViewDelegate, MPAdViewD
                 
             } else if (adServerName == "MoPub") {
                 
-                mpBanner = MPAdView(adUnitId: "864f76efd1e844eeae270d3a89dfd6fa")
+                mpBanner = MPAdView(adUnitId: "08184aed0b874758b555100b98f562a4")
                 mpBanner.frame = CGRect(x: 0, y: 0, width: 300, height: 250)
                 mpBanner.delegate = self
-                view.addSubview(mpBanner)
+                appBannerView.addSubview(mpBanner)
                 // Do any additional setup after loading the view, typically from a nib.
                 adUnit.fetchDemand(adObject: mpBanner) { [weak self] (resultCode: ResultCode) in
                     guard let self = self else {
@@ -70,7 +70,7 @@ class OutstreamViewController: UIViewController,GADBannerViewDelegate, MPAdViewD
                         return
                     }
 
-                    self.mpBanner.loadAd(withMaxAdSize: CGSize(width: 500, height: 500))
+                    self.mpBanner.loadAd(withMaxAdSize: kMPPresetMaxAdSizeMatchFrame)
                 }
 
             }
@@ -124,8 +124,8 @@ class OutstreamViewController: UIViewController,GADBannerViewDelegate, MPAdViewD
         }
 
         func adViewDidLoadAd(_ view: MPAdView!, adSize: CGSize) {
-            
-            view.sizeToFit()
+            print("adView:adViewDidLoadAd")
+            //view.sizeToFit()
             
         }
 
