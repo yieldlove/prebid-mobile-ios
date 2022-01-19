@@ -20,6 +20,11 @@ extension String {
     static let EMPTY_String = ""
 
     static let kIFASentinelValue = "00000000-0000-0000-0000-000000000000"
+    
+    // this vendor id is generated based on the bundle id, i.e.: "com.example.app1"
+    // and stays the same while the app is installed on the device.
+    // Source: https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor
+    static let kIFVSentinelValue = "4EE19465-23E0-455F-BA43-A4E962766CF0"
 
     //TODO: Improvement - use a set
     static let DFP_Object_Name = "DFPRequest"
