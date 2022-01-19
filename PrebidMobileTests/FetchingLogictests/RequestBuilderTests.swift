@@ -574,6 +574,34 @@ class RequestBuilderTests: XCTestCase, CLLocationManagerDelegate {
         //then
         XCTAssertEqual(idfa, .kIFASentinelValue)
     }
+    
+    //MARK: - TCFv2
+    func testPostDataIfv() throws {
+
+        //given
+        let targeting = Targeting.shared
+        targeting.subjectToGDPR = false
+        targeting.purposeConsents = "100000000000000000000000"
+
+        defer {
+            targeting.subjectToGDPR = nil
+            targeting.purposeConsents = nil
+        }
+
+        //when
+        let jsonRequestBody = try getPostDataHelper(adUnit: adUnit).jsonRequestBody
+
+        var idfv: String? = nil
+
+        if let regs = jsonRequestBody["device"] as? [String: Any],
+            let ext = regs["ext"] as? [String: Any],
+            let ifv = ext["ifv"] as? String {
+            idfv = ifv
+        }
+
+        //then
+        XCTAssertEqual(idfv, .kIFVSentinelValue)
+    }
 
     //TCFv2 and gdpr
     //fetch advertising identifier based TCF 2.0 Purpose1 value
