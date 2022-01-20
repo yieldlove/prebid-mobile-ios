@@ -600,7 +600,8 @@ class RequestBuilderTests: XCTestCase, CLLocationManagerDelegate {
         }
 
         //then
-        XCTAssertEqual(idfv, .kIFVSentinelValue)
+        XCTAssertNotNil(idfv)
+        XCTAssertNotEqual(idfv, "")
     }
 
     //TCFv2 and gdpr

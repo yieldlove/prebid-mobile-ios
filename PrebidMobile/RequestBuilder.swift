@@ -364,7 +364,7 @@ class RequestBuilder: NSObject {
         let lmtAd: Bool = !ASIdentifierManager.shared().isAdvertisingTrackingEnabled
         // Limit ad tracking
         deviceDict["lmt"] = NSNumber(value: lmtAd).intValue
-        var ifa:String = ""
+        var ifa = ""
         let ifv = RequestBuilder.VendorUUID()
         
         if (isAllowedAccessDeviceData()) {
