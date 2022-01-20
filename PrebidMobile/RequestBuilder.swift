@@ -364,10 +364,13 @@ class RequestBuilder: NSObject {
         let lmtAd: Bool = !ASIdentifierManager.shared().isAdvertisingTrackingEnabled
         // Limit ad tracking
         deviceDict["lmt"] = NSNumber(value: lmtAd).intValue
+        var ifa = ""
+        let ifv = RequestBuilder.VendorUUID()
         
         if (isAllowedAccessDeviceData()) {
             let deviceId = RequestBuilder.DeviceUUID()
                 if deviceId != "" {
+                    ifa = deviceId
                     deviceDict["ifa"] = deviceId
                 }
         }
@@ -379,7 +382,12 @@ class RequestBuilder: NSObject {
 
         deviceDict["pxratio"] = pixelRatio
 
-        if let deviceExt = self.fetchDeviceExt(adUnit: adUnit) {
+        if var deviceExt = self.fetchDeviceExt(adUnit: adUnit) {
+            //Only passed when IDFA (BidRequest.device.ifa) is unavailable or all zeros.
+            
+            if ((ifa == "" || ifa == "00000000-0000-0000-0000-000000000000") && ifv != "") {
+                deviceExt["ifv"] = ifv
+            }
             deviceDict["ext"] = deviceExt
         }
 
@@ -574,6 +582,16 @@ class RequestBuilder: NSObject {
                 })
         }
 
+    }
+    
+    class func VendorUUID() -> String {
+        var uuidString: String = ""
+
+        if let advertisingIdentifier = UIDevice.current.identifierForVendor {
+            uuidString = advertisingIdentifier.uuidString
+        }
+
+        return uuidString
     }
 
     class func DeviceUUID() -> String {
